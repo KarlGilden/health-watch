@@ -1,12 +1,8 @@
 import { Box, Button, Stack, Typography } from '@mui/material';
 import * as React from 'react';
 
-import SwipeableTemporaryDrawer from "../Components/Navbar.tsx"
-
-const PatientDashboard = () => {
-
 import { useAuth } from '../context/AuthContext';
-
+import SwipeableTemporaryDrawer from "../Components/Navbar.tsx"
 
 const PatientDashboard = () => {
 
