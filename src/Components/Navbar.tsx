@@ -7,7 +7,7 @@ import Divider from "@mui/material/Divider";
 import ListItem from "@mui/material/ListItem";
 import ListItemButton from "@mui/material/ListItemButton";
 import ListItemText from "@mui/material/ListItemText";
-import CircleIcon from '@mui/icons-material/Circle';
+import FiberManualRecordIcon from '@mui/icons-material/FiberManualRecord';
 
 type Anchor = "Menu";
 
@@ -44,7 +44,7 @@ export default function SwipeableTemporaryDrawer() {
         ].map((text, index) => (
           <ListItem key={text}>
             <ListItemButton>
-              <CircleIcon fontSize="small"/>
+              <FiberManualRecordIcon fontSize="small" sx={{color: "white", paddingRight: 1}}/>
               <ListItemText primary={text} sx={{ color: "white" }} />
             </ListItemButton>
           </ListItem>
