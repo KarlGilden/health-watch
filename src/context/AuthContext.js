@@ -47,7 +47,6 @@ const AuthProvider = ({children}) => {
         setAuthLoading(true)
         try {
             await createUserWithEmailAndPassword(auth, email, password)
-            navigate('/courses')
         }catch (error){
             console.log(error)
         }
@@ -58,7 +57,7 @@ const AuthProvider = ({children}) => {
         setAuthLoading(true)
         try {
             await signInWithEmailAndPassword(auth, email, password)
-            navigate('/courses')
+            navigate('/dashboard')
         }catch(error){
             return error.message
         }

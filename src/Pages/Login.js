@@ -1,4 +1,4 @@
-import * as React from 'react';
+import {React, useState} from 'react'
 
 import {Link} from '@mui/material'
 import Button from '@mui/material/Button';
@@ -11,10 +11,31 @@ import Typography from '@mui/material/Typography';
 import Container from '@mui/material/Container';
 import { createTheme, ThemeProvider } from '@mui/material/styles';
 import Checkbox from '@mui/material/Checkbox';
+import { useAuth } from '../context/AuthContext';
+import { useNavigate } from 'react-router-dom';
 const label = { inputProps: { 'aria-label': 'Checkbox demo' } };
 
 const theme = createTheme();
 const Login = () => {
+
+    const { login } = useAuth()
+
+    // init navigation hook
+    const navigate = useNavigate()
+
+    // login form state
+    const [email, setEmail] = useState("");
+    const [password, setPassword] = useState("");
+    const [error, setError] = useState("");
+
+    const handleLogin = async () => {
+        if(email.length > 0 && password.length > 0){
+            const e = await login(email, password)
+            setError(e)
+        }
+
+    }
+
     return (
         <ThemeProvider theme={theme}>
             <Container component="main" maxWidth="xs">
@@ -42,6 +63,10 @@ const Login = () => {
                                     label="Email Address"
                                     name="email"
                                     autoComplete="email"
+
+                                    onChange={(e)=>{
+                                        setEmail(e.target.value)
+                                    }}
                                 />
                             </Grid>
                             <Grid item xs={12}>
@@ -53,6 +78,10 @@ const Login = () => {
                                     type={"password"}
                                     id="password"
                                     autoComplete="new-password"
+
+                                    onChange={(e)=>{
+                                        setPassword(e.target.value)
+                                    }}
                                 />
                             </Grid>
                             <Grid item>
@@ -65,10 +94,13 @@ const Login = () => {
 
                         </Grid>
                         <Button
-                            type="submit"
                             fullWidth
                             variant="contained"
                             sx={{ mt: 3, mb: 2 }}
+
+                            onClick={()=>{
+                                handleLogin()
+                            }}
                         >
                             Log in
                         </Button>
