@@ -7,6 +7,8 @@ import {
 } from 'firebase/auth'
 import { auth } from '../firebase/firebase'
 import { useNavigate } from 'react-router-dom';
+import { addDoc, collection, doc, getDocs} from "firebase/firestore";
+
 
 export const AuthContext = createContext();
 
@@ -64,9 +66,44 @@ const AuthProvider = ({children}) => {
 
      }
 
-     const logout = async () => {
+    const logout = async () => {
          await signOut(auth)
      }
+
+    // Simple function to test adding a patient works
+    // Eventually pass in a patient object I think, then add it
+    const addPatient = async() => {
+        setAuthLoading(true)
+        try {
+            const docRef = await addDoc(collection(db, "Patients"), {
+            name: "Yeran",
+            last: "Edmonds",
+            born: 1881
+            });
+            console.log("added patient: ", docRef.id);
+        } catch (e) {
+            console.error("Error added patient: ", e);
+        }}
+    
+    // Simple function to retrieve a patient
+    // Currently just prints each patient's data according to id
+    // Also returns the first doc for testing purposes
+    const retrievePatient = async() => {
+        setAuthLoading(true)
+        try {
+            const querySnapshot = await getDocs(collection(db, "Patients"));
+            var toReturn;
+            querySnapshot.forEach((doc) => {
+                if (doc.id == 0) {
+                    toReturn = doc;
+                }
+                console.log(`${doc.id} => ${doc.data()}`);
+            });
+            return toReturn;
+        } catch (e) {
+            console.error("error retrieving patienr: ", e);
+        }
+    }
 
      const value = {
         user,
@@ -75,6 +112,7 @@ const AuthProvider = ({children}) => {
         login,
         logout
     }
+
 
     return (
         <AuthContext.Provider value={value}>
