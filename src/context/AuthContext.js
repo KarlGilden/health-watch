@@ -5,7 +5,7 @@ import {
     signOut,
     onAuthStateChanged 
 } from 'firebase/auth'
-import { auth } from '../firebase/firebase'
+import { auth, db } from '../firebase/firebase'
 import { useNavigate } from 'react-router-dom';
 import { addDoc, collection, doc, getDocs} from "firebase/firestore";
 
