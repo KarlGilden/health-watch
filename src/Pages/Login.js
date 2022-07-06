@@ -1,12 +1,17 @@
 import * as React from 'react';
+
+import {Link} from '@mui/material'
 import Button from '@mui/material/Button';
 import CssBaseline from '@mui/material/CssBaseline';
 import TextField from '@mui/material/TextField';
 import Grid from '@mui/material/Grid';
+import Stack from '@mui/material/Stack'
 import Box from '@mui/material/Box';
 import Typography from '@mui/material/Typography';
 import Container from '@mui/material/Container';
 import { createTheme, ThemeProvider } from '@mui/material/styles';
+import Checkbox from '@mui/material/Checkbox';
+const label = { inputProps: { 'aria-label': 'Checkbox demo' } };
 
 const theme = createTheme();
 const Login = () => {
@@ -50,6 +55,14 @@ const Login = () => {
                                     autoComplete="new-password"
                                 />
                             </Grid>
+                            <Grid item>
+                                <Stack sx={{paddingRight: 10}} direction='row'>
+                                    <Checkbox {...label} defaultChecked />
+                                    <Typography sx={{paddingTop: 1}}>Remember me</Typography>
+                                </Stack>
+                            </Grid>
+
+
                         </Grid>
                         <Button
                             type="submit"
@@ -59,6 +72,21 @@ const Login = () => {
                         >
                             Log in
                         </Button>
+                        <Grid container justifyContent="center">
+                            <Stack direction={'column'} spacing={1}>
+                                <Grid item>
+                                    <Link href="" variant="body2">
+                                        Forgot Password?
+                                    </Link>
+                                </Grid>
+                                <Grid item>
+                                    <Link href="" variant="body2">
+                                        Don't have an account? Sign up!
+                                    </Link>
+                                </Grid>
+                            </Stack>
+                           
+                        </Grid>
                     </Box>
                 </Box>
             </Container>
