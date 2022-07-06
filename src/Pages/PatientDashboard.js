@@ -5,6 +5,13 @@ import SwipeableTemporaryDrawer from "../Components/Navbar.tsx"
 
 const PatientDashboard = () => {
 
+import { useAuth } from '../context/AuthContext';
+
+
+const PatientDashboard = () => {
+
+    const { user } = useAuth()
+
     const btn = {
         width: 500, background:"#9DD9F3"
     }
@@ -37,6 +44,6 @@ const PatientDashboard = () => {
             </Box>
         </div>
     )
-}
+}}
 
 export default PatientDashboard;
