@@ -40,6 +40,6 @@ const PatientDashboard = () => {
             </Box>
         </div>
     )
-}}
+}
 
 export default PatientDashboard;
