@@ -8,7 +8,7 @@ import {
 import { auth } from '../firebase/firebase'
 import { useNavigate } from 'react-router-dom';
 
-export const AuthContext = createContext();
+export const AuthContext = React.createContext();
 
 // useAuth hook
 

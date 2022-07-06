@@ -1,16 +1,17 @@
 import {BrowserRouter as Router, Routes, Route} from "react-router-dom";
 import './App.css';
+import AuthProvider from "./context/AuthContext";
 import PatientDashboard from './Pages/PatientDashboard.js';
 
 function App() {
   return (
     <div className="App">
       <Router>
-        <div>
+        <AuthProvider>
           <Routes>
-            <Route path="/patientDashboard" element={<PatientDashboard/>}/>
+            <Route path="/" element={<PatientDashboard/>}/>
           </Routes>
-        </div>
+        </AuthProvider>
       </Router>
 
     </div>
