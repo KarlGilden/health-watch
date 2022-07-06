@@ -23,18 +23,3 @@ export const auth = getAuth(app);
 
 // Initialize Firestore
 const db = getFirestore(app);
-
-
-function commitPatient () {
-  try {
-    const docRef = await addDoc(collection(db, "patients"), {
-      name: "Yeran",
-      last: "Edmonds",
-      born: 1881
-    });
-
-    console.log("Document written with ID: ", docRef.id);
-  } catch (e) {
-    console.error(e);
-  }
-}
