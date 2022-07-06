@@ -16,7 +16,7 @@ const PatientDashboard = () => {
             <Box m={5} pt={3}>
                 <Stack justifyContent="center" alignItems="center" direction="column" spacing={3} >
                     <Typography variant="h4" sx={{paddingBottom: 4}}>
-                        Dashboard
+                        Dashboard {user.uid}
                     </Typography>
 
                     <Button variant="contained" sx={{...btn}}>

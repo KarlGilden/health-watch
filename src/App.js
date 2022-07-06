@@ -10,7 +10,8 @@ function App() {
       <Router>
         <AuthProvider>
           <Routes>
-            <Route path="/" element={<PatientDashboard/>}/>
+            <Route path="/" element={<Login/>}/>
+            <Route path="/dashboard" element={<PatientDashboard/>}/>
           </Routes>
         </AuthProvider>
       </Router>
