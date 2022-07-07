@@ -7,7 +7,7 @@ import {
 } from 'firebase/auth'
 import { auth, db } from '../firebase/firebase'
 import { useNavigate } from 'react-router-dom';
-import { addDoc, collection, doc, getDocs} from "firebase/firestore";
+import { addDoc, collection, doc, getDocs, getDoc} from "firebase/firestore";
 
 
 export const AuthContext = React.createContext();
@@ -27,7 +27,8 @@ export function useAuth(){
 const AuthProvider = ({children}) => {
 
     const navigate = useNavigate()
-    const [user, setUser] = useState(undefined)    
+    const [user, setUser] = useState(undefined)   
+    const [isPractitioner, setIsPractitioner] = useState(undefined) 
     const [authLoading, setAuthLoading] = useState(true)
 
     useEffect(() => {
@@ -52,18 +53,38 @@ const AuthProvider = ({children}) => {
         }
         setAuthLoading(false)
     }
+    const checkRole = async (email) => {
+        const docRef = doc(db, "practitioners", email);
+        const docSnap = await getDoc(docRef)
+
+        if(docSnap.exists()){
+            navigate('/dashboards')
+
+        }else{
+            navigate('/dashboard')
+        }
+    }
 
     const login = async (email, password) => {
         setAuthLoading(true)
         try {
             await signInWithEmailAndPassword(auth, email, password)
-            navigate('/dashboard')
+            setIsPractitioner(await checkRole(email))
+            // if(isPractitioner == true){
+                
+            //     navigate('/dashboards')
+    
+            // }else if(isPractitioner == false){
+            //     navigate('/dashboard')
+            // }
         }catch(error){
             return error.message
         }
         setAuthLoading(false)
 
      }
+
+
 
     const logout = async () => {
          await signOut(auth)
@@ -106,10 +127,12 @@ const AuthProvider = ({children}) => {
 
      const value = {
         user,
+        isPractitioner,
         signup,
         authLoading,
         login,
-        logout
+        logout,
+        checkRole
     }
 
 
