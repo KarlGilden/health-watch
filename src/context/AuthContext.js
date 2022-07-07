@@ -174,6 +174,7 @@ const AuthProvider = ({children}) => {
         isPractitioner,
         signup,
         authLoading,
+        retrievePatient,
         login,
         logout,
         checkRole

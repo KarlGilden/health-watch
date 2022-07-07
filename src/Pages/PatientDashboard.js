@@ -6,7 +6,7 @@ import SwipeableTemporaryDrawer from "../Components/Navbar.tsx"
 
 const PatientDashboard = () => {
 
-    const { user } = useAuth()
+    const { user, retrievePatient } = useAuth()
 
     const btn = {
         width: 500, background:"#9DD9F3"
