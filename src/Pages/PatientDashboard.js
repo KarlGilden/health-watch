@@ -25,7 +25,7 @@ const PatientDashboard = () => {
     }
 
     return (
-        <div style={{background: '#FE675D', height: "110vh"}}>
+        <div style={{background: '#FE675D', height: "100%"}}>
             <Stack direction="row" spacing={10} sx={{padding:5}}>
                 <SwipeableTemporaryDrawer />
                 <Typography variant="h5" sx={{paddingBottom: 4, paddingLeft: 10, color: '#FFFFFF'}}>

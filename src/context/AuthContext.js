@@ -69,14 +69,7 @@ const AuthProvider = ({children}) => {
         setAuthLoading(true)
         try {
             await signInWithEmailAndPassword(auth, email, password)
-            setIsPractitioner(await checkRole(email))
-            // if(isPractitioner == true){
-                
-            //     navigate('/dashboards')
-    
-            // }else if(isPractitioner == false){
-            //     navigate('/dashboard')
-            // }
+            navigate('/dashboard')
         }catch(error){
             return error.message
         }

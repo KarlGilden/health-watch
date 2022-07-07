@@ -15,7 +15,7 @@ const UnauthedRoute = () => {
     }
   return (
     <>
-      {user ? <Navigate to="/dashboards"/> : <Outlet/>}
+      {user ? <Navigate to="/dashboard"/> : <Outlet/>}
 
     </>
 
