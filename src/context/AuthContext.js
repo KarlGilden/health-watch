@@ -7,7 +7,7 @@ import {
 } from 'firebase/auth'
 import { auth, db } from '../firebase/firebase'
 import { useNavigate } from 'react-router-dom';
-import { addDoc, collection, doc, getDocs, getDoc} from "firebase/firestore";
+import { addDoc, collection, doc, getDocs, getDoc, setDoc, query, where} from "firebase/firestore";
 
 
 export const AuthContext = React.createContext();
@@ -92,15 +92,14 @@ const AuthProvider = ({children}) => {
 
     // variable to ref patients table
 
-    const patientRef = collection(db, "Patients");
-    const practitionerRef = collection(db, "Practitioners");
+    const practitionerRef = collection(db, "practitioners");
 
     // Simple function to test adding a patient works
     // Eventually pass in a patient object I think, then add it
     const addPatient = async(patient) => {
         setAuthLoading(true)
         try {
-            await setDoc(doc(patientRef, patient.email), {
+            await setDoc(doc(db, "patients", patient.email), {
                 name: patient.name,
                 email: patient.email,
                 DOB: patient.DOB,
@@ -117,19 +116,13 @@ const AuthProvider = ({children}) => {
     // Also returns the first doc for testing purposes
     const retrievePatient = async(email) => {
         try {
-            const doc = await getDoc(patientRef, email);
-            if (!doc.exists()) {
-                throw 'Patient does not exist';
-            }
+            const q = query(collection(db, "patients"), where("email", "==", email));
 
-            const returnPatient = {
-                name: doc.data().name,
-                email: doc.data().email,
-                DOB: doc.data().DOB,
-                NHI: doc.data().NHI
-            }
-
-            return returnPatient;
+            const querySnapshot = await getDocs(q);
+            querySnapshot.forEach((doc) => {
+              // doc.data() is never undefined for query doc snapshots
+              console.log(doc.id, " => ", doc.data());
+            });
         } catch (e) {
             console.error("error retrieving patient: ", e);
         }

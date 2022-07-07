@@ -2,11 +2,25 @@ import { Box, Button, Stack, Typography } from '@mui/material';
 import * as React from 'react';
 
 import { useAuth } from '../context/AuthContext';
+import { db } from '../firebase/firebase'
 import SwipeableTemporaryDrawer from "../Components/Navbar.tsx"
+import { collection, where, getDocs, query } from 'firebase/firestore';
 
 const PatientDashboard = () => {
 
     const { user, retrievePatient } = useAuth()
+
+    const [patientData, setPatientData] = React.useState();
+
+    React.useEffect(()=>{
+        if(user){
+            getPatientData()
+        }
+    })
+
+    const getPatientData = async () => {
+        retrievePatient(user.email)
+    }
 
     const btn = {
         width: 500, background:"#9DD9F3"
