@@ -24,37 +24,33 @@ const PatientDashboard = () => {
         setPatientData(d)
     }
 
-    const btn = {
-        width: 500, background:"#9DD9F3"
-    }
-
     return (
-        <div >
-            <Stack direction="row" spacing={5} sx={{padding:2}}>
+        <div style={{background: '#FE675D', height: "110vh"}}>
+            <Stack direction="row" spacing={10} sx={{padding:5}}>
                 <SwipeableTemporaryDrawer />
-                <Typography variant="h5" sx={{paddingBottom: 4, paddingRight: 8}}>
+                <Typography variant="h5" sx={{paddingBottom: 4, paddingLeft: 10, color: '#FFFFFF'}}>
                             Patient Profile
                 </Typography>
             </Stack>
 
-            <Container maxWidth="xl">
+            <Container>
 
                 <Stack direction="column" spacing={1}>
                     <Card fullWidth sx={{ padding: 3}}>
                     <Stack direction="row" spacing={5} >
                         <Avatar sx={{width:100, height: 100, padding: 2}} />
                         <Stack direction="column" justifyContent="flex-start" alignItems="flex-start">
-                            <Typography variant="h8">
+                            <Typography variant="h8" sx={{color: '#FE675D'}}>
                                 Name: {patientData?.name}
                             </Typography>
-                            <Typography variant="h8">
+                            <Typography variant="h8" sx={{color: '#FE675D'}}>
                                 NHI: {patientData?.NHI}
                             </Typography>
-                            <Typography variant="h8">
+                            <Typography variant="h8" sx={{color: '#FE675D'}}>
                                 DOB: {patientData?.DOB}
                             </Typography>
-                            <Typography variant="h8">
-                                    Age: 
+                            <Typography variant="h8" sx={{color: '#FE675D'}}>
+                                    Age: 21
                             </Typography>
                         </Stack>
                     </Stack>
@@ -77,13 +73,13 @@ const PatientDashboard = () => {
                         <Card sx={{width:'40%', padding: 3}}>
                             <Stack direction="row" spacing={5} >
                                 <Stack direction="column" justifyContent="flex-start" alignItems="flex-start">
-                                    <Typography variant="h8">
+                                    <Typography variant="h8" sx={{color: '#FE675D'}}>
                                         Blood Type: O+ 
                                     </Typography>
-                                    <Typography variant="h8">
+                                    <Typography variant="h8" sx={{color: '#FE675D'}}>
                                         Height: 168cm
                                     </Typography>
-                                    <Typography variant="h8">
+                                    <Typography variant="h8" sx={{color: '#FE675D'}}>
                                         Weight: 80kg
                                     </Typography>
                                 </Stack>
@@ -93,13 +89,13 @@ const PatientDashboard = () => {
                             <Card sx={{width:'60%', padding: 3}}>
                             <Stack direction="row" spacing={5} >
                                 <Stack direction="column" justifyContent="flex-start" alignItems="flex-start">
-                                    <Typography variant="h8">
+                                    <Typography variant="h8" sx={{color: '#FE675D'}}>
                                         Emergency Contacts 
                                     </Typography>
-                                    <Typography variant="h8">
+                                    <Typography variant="h8" sx={{color: '#FE675D'}}>
                                         - Karen Doe
                                     </Typography>
-                                    <Typography variant="h8">
+                                    <Typography variant="h8" sx={{color: '#FE675D'}}>
                                         - Joe Doe
                                     </Typography>
                                 </Stack>
@@ -111,13 +107,13 @@ const PatientDashboard = () => {
                     <Card fullWidth sx={{padding: 3}}>
                         <Stack direction="row" spacing={5} >
                             <Stack direction="column" justifyContent="flex-start" alignItems="flex-start">
-                                <Typography variant="h8">
+                                <Typography variant="h8" sx={{color: '#FE675D'}}>
                                     Allergies And Reactions
                                 </Typography>
-                                <Typography variant="h8">
+                                <Typography variant="h8" sx={{color: '#FE675D'}}>
                                     - Bees
                                 </Typography>
-                                <Typography variant="h8">
+                                <Typography variant="h8" sx={{color: '#FE675D'}}>
                                     - Swelling of entire body
                                 </Typography>
                             </Stack>
@@ -129,13 +125,13 @@ const PatientDashboard = () => {
                         <Card sx={{width:'50%', padding: 3}}>
                             <Stack direction="row" spacing={5} >
                                 <Stack direction="column" justifyContent="flex-start" alignItems="flex-start">
-                                    <Typography variant="h8">
+                                    <Typography variant="h8" sx={{color: '#FE675D'}}>
                                         Current Medication
                                     </Typography>
-                                    <Typography variant="h8">
+                                    <Typography variant="h8" sx={{color: '#FE675D'}}>
                                         - Lisinoprli
                                     </Typography>
-                                    <Typography variant="h8">
+                                    <Typography variant="h8" sx={{color: '#FE675D'}}>
                                         - Glyburide
                                     </Typography>
                                 </Stack>
@@ -145,10 +141,10 @@ const PatientDashboard = () => {
                             <Card sx={{width:'50%', padding: 3}}>
                             <Stack direction="row" spacing={5} >
                                 <Stack direction="column" justifyContent="flex-start" alignItems="flex-start">
-                                    <Typography variant="h8">
+                                    <Typography variant="h8" sx={{color: '#FE675D'}}>
                                         Heart Rate
                                     </Typography>
-                                    <Typography variant="h4">
+                                    <Typography variant="h4" sx={{color: '#FE675D'}}>
                                         100bpm
                                     </Typography>
                                 </Stack>
@@ -156,7 +152,7 @@ const PatientDashboard = () => {
                             </Card>
                     </Stack>
 
-                    <Button fullWidth variant="contained">
+                    <Button fullWidth variant="contained" sx={{color: '#FE675D', background: 'white'}}>
                         Back
                     </Button>
 

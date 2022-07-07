@@ -38,18 +38,17 @@ const Login = () => {
     }
 
     return (
-            <Container component="main" fullWidth>
+            <Container component="main" maxWidth sx={{background: '#FE675D', height: '100vh'}}>
             
                 <Box
                     sx={{
-                        marginTop: 5,
                         display: 'flex',
                         flexDirection: 'column',
                         alignItems: 'center',
                         
                     }}
                 >
-                    <Typography component="h1" variant="h2" sx ={{paddingTop: 2, paddingBottom: 5}}>
+                    <Typography component="h1" variant="h2" sx ={{paddingTop: 2, paddingBottom: 5, color: '#FFFFFF'}}>
                         Health Watch
                     </Typography>
 
@@ -90,7 +89,7 @@ const Login = () => {
                             <Grid item>
                                 <Stack sx={{paddingRight: 10}} direction='row'>
                                     <Checkbox {...label} defaultChecked />
-                                    <Typography sx={{paddingTop: 1}}>Remember Me</Typography>
+                                    <Typography sx={{paddingTop: 1, color: '#FFFFFF'}}>Remember Me</Typography>
                                 </Stack>
                             </Grid>
 
@@ -99,7 +98,7 @@ const Login = () => {
                         <Button
                             fullWidth
                             variant="contained"
-                            sx={{ mt: 1, mb: 2, background: '#9DD9F3'}}
+                            sx={{ mt: 1, mb: 2, background: '#FFFFFF', color:'#FE675D'}}
                             onClick={()=>{
                                 handleLogin()
                             }}
@@ -109,21 +108,17 @@ const Login = () => {
                         <Grid container justifyContent="center">
                             <Stack direction={'column'}>
                                 <Grid item>
-                                    <Link href="" variant="body2">
+                                    <Link href="" variant="body2" sx={{color: '#FFFFFF'}}>
                                         Forgot Password?
                                     </Link>
                                 </Grid>
                                 <Grid item>
-                                    <Link href="" variant="body2">
+                                    <Link href="" variant="body2" sx={{color: '#FFFFFF'}}>
                                         Don't have an account? Sign up
                                     </Link>
                                 </Grid>
 
                             </Stack>   
-                        </Grid>
-
-                        <Grid sx={{marginTop: 7}}>
-                            <SOSButton/>
                         </Grid>
                     </Box>
                 </Box>

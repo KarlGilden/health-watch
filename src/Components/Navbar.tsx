@@ -35,7 +35,7 @@ export default function SwipeableTemporaryDrawer() {
   };
 
   const list = () => (
-    <Box role="presentation" sx={{ background: "#9DD9F3", height:"100%" }}>
+    <Box role="presentation" sx={{ background: "whtie", height:"100%" }}>
       <List>
         {[
           "Dashboard",
@@ -47,13 +47,13 @@ export default function SwipeableTemporaryDrawer() {
         ].map((text, index) => (
           <ListItem key={text}>
             <ListItemButton>
-              <FiberManualRecordIcon fontSize="small" sx={{color: "white", paddingRight: 1}}/>
-              <ListItemText primary={text} sx={{ color: "white" }} />
+              <FiberManualRecordIcon fontSize="small" sx={{color: "#FE675D", paddingRight: 1}}/>
+              <ListItemText primary={text} sx={{ color: "#FE675D" }} />
             </ListItemButton>
           </ListItem>
         ))}
       </List>
-      <Button variant="contained" fullWidth sx={{background:"black"} } onClick={()=>{logout()}}>
+      <Button variant="contained" fullWidth sx={{color:"white", background: "#FE675D", bottom: 0, position: "absolute", marginBottom: 8}} onClick={()=>{logout()}}>
         Sign Out
       </Button>
       <Divider />
