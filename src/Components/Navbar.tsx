@@ -8,6 +8,7 @@ import ListItem from "@mui/material/ListItem";
 import ListItemButton from "@mui/material/ListItemButton";
 import ListItemText from "@mui/material/ListItemText";
 import FiberManualRecordIcon from '@mui/icons-material/FiberManualRecord';
+import { useAuth } from "../context/AuthContext";
 
 type Anchor = "Menu";
 
@@ -15,6 +16,8 @@ export default function SwipeableTemporaryDrawer() {
   const [state, setState] = React.useState({
     Menu: false
   });
+
+  const {logout} = useAuth()
 
   const toggleDrawer = (anchor: Anchor, open: boolean) => (
     event: React.KeyboardEvent | React.MouseEvent
@@ -50,7 +53,7 @@ export default function SwipeableTemporaryDrawer() {
           </ListItem>
         ))}
       </List>
-      <Button variant="contained" fullWidth sx={{background:"black"}}>
+      <Button variant="contained" fullWidth sx={{background:"black"} } onClick={()=>{logout()}}>
         Sign Out
       </Button>
       <Divider />

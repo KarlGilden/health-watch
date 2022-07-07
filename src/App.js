@@ -3,6 +3,8 @@ import './App.css';
 import Login from './Pages/Login';
 import AuthProvider from "./context/AuthContext";
 import PatientDashboard from './Pages/PatientDashboard.js';
+import PrivateRoute from "./Components/PrivateRoute";
+import UnauthedRoute from "./Components/UnauthedRoute";
 
 function App() {
   return (
@@ -10,8 +12,12 @@ function App() {
       <Router>
         <AuthProvider>
           <Routes>
-            <Route path="/" element={<Login/>}/>
-            <Route path="/dashboard" element={<PatientDashboard/>}/>
+            <Route element={<UnauthedRoute/>}>
+              <Route path="/" element={<Login/>}/>
+            </Route>
+            <Route element={<PrivateRoute/>}>
+              <Route path="/dashboard" element={<PatientDashboard/>}/>
+            </Route>
           </Routes>
         </AuthProvider>
       </Router>
