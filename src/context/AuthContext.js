@@ -90,17 +90,24 @@ const AuthProvider = ({children}) => {
          await signOut(auth)
      }
 
+    // variable to ref patients table
+
+    const patientRef = collection(db, "Patients");
+    const practitionerRef = collection(db, "Practitioners");
+
     // Simple function to test adding a patient works
     // Eventually pass in a patient object I think, then add it
-    const addPatient = async() => {
+    const addPatient = async(patient) => {
         setAuthLoading(true)
         try {
-            const docRef = await addDoc(collection(db, "Patients"), {
-            name: "Yeran",
-            last: "Edmonds",
-            born: 1881
+            await setDoc(doc(patientRef, patient.email), {
+                name: patient.name,
+                email: patient.email,
+                DOB: patient.DOB,
+                NHI: patient.NHI
             });
-            console.log("added patient: ", docRef.id);
+            
+            console.log("added patient: ", patient.name);
         } catch (e) {
             console.error("Error added patient: ", e);
         }}
@@ -108,20 +115,57 @@ const AuthProvider = ({children}) => {
     // Simple function to retrieve a patient
     // Currently just prints each patient's data according to id
     // Also returns the first doc for testing purposes
-    const retrievePatient = async() => {
+    const retrievePatient = async(email) => {
+        try {
+            const doc = await getDoc(patientRef, email);
+            if (!doc.exists()) {
+                throw 'Patient does not exist';
+            }
+
+            const returnPatient = {
+                name: doc.data().name,
+                email: doc.data().email,
+                DOB: doc.data().DOB,
+                NHI: doc.data().NHI
+            }
+
+            return returnPatient;
+        } catch (e) {
+            console.error("error retrieving patient: ", e);
+        }
+    }
+
+    const addPractitioner = async(practitioner) => {
+        try {
+            await setDoc(doc(practitionerRef, practitioner.email), {
+                name: practitioner.name,
+                email: practitioner.email,
+                DOB: practitioner.DOB,
+                HPI: practitioner.HPI
+            });
+            
+            console.log("added practitioner: ", practitioner.name);
+        } catch (e) {
+            console.error("Error added patient: ", e);
+        }}
+
+    const retrievePractitioner = async(email) => {
         setAuthLoading(true)
         try {
-            const querySnapshot = await getDocs(collection(db, "Patients"));
-            var toReturn;
-            querySnapshot.forEach((doc) => {
-                if (doc.id == 0) {
-                    toReturn = doc;
-                }
-                console.log(`${doc.id} => ${doc.data()}`);
-            });
-            return toReturn;
+            const doc = await getDoc(practitionerRef, email);
+            if (!doc.exists()) {
+                throw 'Practitioer does not exist';
+            }
+
+            const returnPract = {
+                name: doc.data().name,
+                email: doc.data().email,
+                DOB: doc.data().DOB,
+                HPI: doc.data().HPI
+            }
+            return returnPract
         } catch (e) {
-            console.error("error retrieving patienr: ", e);
+            console.error("error retrieving practitioner: ", e);
         }
     }
 
