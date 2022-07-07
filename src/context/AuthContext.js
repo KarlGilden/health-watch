@@ -7,7 +7,7 @@ import {
 } from 'firebase/auth'
 import { auth, db } from '../firebase/firebase'
 import { useNavigate } from 'react-router-dom';
-import { addDoc, collection, doc, getDoc, getDocs} from "firebase/firestore";
+import { setDoc, collection, doc, getDoc} from "firebase/firestore";
 
 
 export const AuthContext = React.createContext();
@@ -79,8 +79,6 @@ const AuthProvider = ({children}) => {
     const addPatient = async(patient) => {
         setAuthLoading(true)
         try {
-            // This doesn't check or validate for hash collisions
-            // Need a checker function for this in the future
             await setDoc(doc(patientRef, patient.email), {
                 name: patient.name,
                 email: patient.email,
@@ -118,8 +116,6 @@ const AuthProvider = ({children}) => {
 
     const addPractitioner = async(practitioner) => {
         try {
-            // This doesn't check or validate for hash collisions
-            // Need a checker function for this in the future
             await setDoc(doc(practitionerRef, practitioner.email), {
                 name: practitioner.name,
                 email: practitioner.email,
@@ -127,7 +123,7 @@ const AuthProvider = ({children}) => {
                 HPI: practitioner.HPI
             });
             
-            console.log("added patient: ", patient.name);
+            console.log("added practitioner: ", practitioner.name);
         } catch (e) {
             console.error("Error added patient: ", e);
         }}
@@ -136,7 +132,7 @@ const AuthProvider = ({children}) => {
         setAuthLoading(true)
         try {
             const doc = await getDoc(practitionerRef, email);
-            if (!dox.exists()) {
+            if (!doc.exists()) {
                 throw 'Practitioer does not exist';
             }
 
