@@ -1,6 +1,6 @@
-import { Avatar, Container, Button, Stack, Typography, Card, CardMedia, CardContent, CardActions, CardActionArea} from '@mui/material';
+import { Avatar, Container, Button,Grid, Stack, Typography, Card, CardMedia, CardContent, CardActions, CardActionArea} from '@mui/material';
 import * as React from 'react';
-
+import SOSButton from '../Components/SOSButton'
 import { useAuth } from '../context/AuthContext';
 import { db } from '../firebase/firebase'
 import SwipeableTemporaryDrawer from "../Components/Navbar.tsx"
@@ -25,31 +25,32 @@ const PatientDashboard = () => {
     }
 
     return (
-        <div style={{background: '#FE675D', height: "100%"}}>
-            <Stack direction="row" spacing={10} sx={{padding:5}}>
+        <div>
+            <Stack direction="row" justifyContent="space-evenly" spacing={10} sx={{padding:5}}>
                 <SwipeableTemporaryDrawer />
-                <Typography variant="h5" sx={{paddingBottom: 4, paddingLeft: 10, color: '#FFFFFF'}}>
-                            Patient Profile
+                <Typography variant="h4" sx={{paddingBottom: 4, paddingLeft: 15, color: '#FE675D'}}>
+                            Dashboard
                 </Typography>
+                <Button></Button>
             </Stack>
 
             <Container>
 
                 <Stack direction="column" spacing={1}>
-                    <Card fullWidth sx={{ padding: 3}}>
+                    <Card fullWidth sx={{ padding: 3, background: '#FE675D'}}>
                     <Stack direction="row" spacing={5} >
                         <Avatar sx={{width:100, height: 100, padding: 2}} />
                         <Stack direction="column" justifyContent="flex-start" alignItems="flex-start">
-                            <Typography variant="h8" sx={{color: '#FE675D'}}>
+                            <Typography variant="h8" sx={{color: '#FFFFFF'}}>
                                 Name: {patientData?.name}
                             </Typography>
-                            <Typography variant="h8" sx={{color: '#FE675D'}}>
+                            <Typography variant="h8" sx={{color: '#FFFFFF'}}>
                                 NHI: {patientData?.NHI}
                             </Typography>
-                            <Typography variant="h8" sx={{color: '#FE675D'}}>
+                            <Typography variant="h8" sx={{color: '#FFFFFF'}}>
                                 DOB: {patientData?.DOB}
                             </Typography>
-                            <Typography variant="h8" sx={{color: '#FE675D'}}>
+                            <Typography variant="h8" sx={{color: '#FFFFFF'}}>
                                     Age: 21
                             </Typography>
                         </Stack>
@@ -69,33 +70,33 @@ const PatientDashboard = () => {
                             />
                     </Card>
 
-                    <Stack direction="row" spacing={1}>
-                        <Card sx={{width:'40%', padding: 3}}>
+                    <Stack direction="row" spacing={1} >
+                        <Card sx={{width:'40%', padding: 3, background: '#FE675D'}} >
                             <Stack direction="row" spacing={5} >
                                 <Stack direction="column" justifyContent="flex-start" alignItems="flex-start">
-                                    <Typography variant="h8" sx={{color: '#FE675D'}}>
+                                    <Typography variant="h8" sx={{color: '#FFFFFF'}}>
                                         Blood Type: O+ 
                                     </Typography>
-                                    <Typography variant="h8" sx={{color: '#FE675D'}}>
+                                    <Typography variant="h8" sx={{color: '#FFFFFF'}}>
                                         Height: 168cm
                                     </Typography>
-                                    <Typography variant="h8" sx={{color: '#FE675D'}}>
+                                    <Typography variant="h8" sx={{color: '#FFFFFF'}}>
                                         Weight: 80kg
                                     </Typography>
                                 </Stack>
                             </Stack>
                             </Card>
 
-                            <Card sx={{width:'60%', padding: 3}}>
+                            <Card sx={{width:'60%', padding: 3, background: '#FE675D'}}>
                             <Stack direction="row" spacing={5} >
                                 <Stack direction="column" justifyContent="flex-start" alignItems="flex-start">
-                                    <Typography variant="h8" sx={{color: '#FE675D'}}>
+                                    <Typography variant="h8" sx={{color: '#FFFFFF'}}>
                                         Emergency Contacts 
                                     </Typography>
-                                    <Typography variant="h8" sx={{color: '#FE675D'}}>
+                                    <Typography variant="h8" sx={{color: '#FFFFFF'}}>
                                         - Karen Doe
                                     </Typography>
-                                    <Typography variant="h8" sx={{color: '#FE675D'}}>
+                                    <Typography variant="h8" sx={{color: '#FFFFFF'}}>
                                         - Joe Doe
                                     </Typography>
                                 </Stack>
@@ -104,16 +105,16 @@ const PatientDashboard = () => {
                     </Stack>
 
 
-                    <Card fullWidth sx={{padding: 3}}>
+                    <Card fullWidth sx={{padding: 3, background: '#FE675D'}}>
                         <Stack direction="row" spacing={5} >
                             <Stack direction="column" justifyContent="flex-start" alignItems="flex-start">
-                                <Typography variant="h8" sx={{color: '#FE675D'}}>
+                                <Typography variant="h8" sx={{color: '#FFFFFF'}}>
                                     Allergies And Reactions
                                 </Typography>
-                                <Typography variant="h8" sx={{color: '#FE675D'}}>
+                                <Typography variant="h8" sx={{color: '#FFFFFF'}}>
                                     - Bees
                                 </Typography>
-                                <Typography variant="h8" sx={{color: '#FE675D'}}>
+                                <Typography variant="h8" sx={{color: '#FFFFFF'}}>
                                     - Swelling of entire body
                                 </Typography>
                             </Stack>
@@ -122,29 +123,29 @@ const PatientDashboard = () => {
 
 
                         <Stack direction="row" spacing={1}>
-                        <Card sx={{width:'50%', padding: 3}}>
+                        <Card sx={{width:'50%', padding: 3, background: '#FE675D'}}>
                             <Stack direction="row" spacing={5} >
                                 <Stack direction="column" justifyContent="flex-start" alignItems="flex-start">
-                                    <Typography variant="h8" sx={{color: '#FE675D'}}>
+                                    <Typography variant="h8" sx={{color: '#FFFFFF'}}>
                                         Current Medication
                                     </Typography>
-                                    <Typography variant="h8" sx={{color: '#FE675D'}}>
+                                    <Typography variant="h8" sx={{color: '#FFFFFF'}}>
                                         - Lisinoprli
                                     </Typography>
-                                    <Typography variant="h8" sx={{color: '#FE675D'}}>
+                                    <Typography variant="h8" sx={{color: '#FFFFFF'}}>
                                         - Glyburide
                                     </Typography>
                                 </Stack>
                             </Stack>
                             </Card>
 
-                            <Card sx={{width:'50%', padding: 3}}>
+                            <Card sx={{width:'50%', padding: 3, background: '#FE675D'}}>
                             <Stack direction="row" spacing={5} >
                                 <Stack direction="column" justifyContent="flex-start" alignItems="flex-start">
-                                    <Typography variant="h8" sx={{color: '#FE675D'}}>
+                                    <Typography variant="h8" sx={{color: '#FFFFFF'}}>
                                         Heart Rate
                                     </Typography>
-                                    <Typography variant="h4" sx={{color: '#FE675D'}}>
+                                    <Typography variant="h4" sx={{color: '#FFFFFF'}}>
                                         100bpm
                                     </Typography>
                                 </Stack>
@@ -152,52 +153,14 @@ const PatientDashboard = () => {
                             </Card>
                     </Stack>
 
-                    <Button fullWidth variant="contained" sx={{color: '#FE675D', background: 'white'}}>
-                        Back
-                    </Button>
+                    <Grid sx={{paddingTop: 5, paddingBottom:5}}>
+                        <SOSButton />
+                    </Grid>
 
-
+                    
 
                 </Stack>
             </Container>
-            
-            
-
-
-
-
-
-            {/* <Box m={5} pt={3} container>
-                <Stack justifyContent="center" alignItems="center" direction="column" spacing={1} >
-                    <Typography variant="h5" sx={{paddingBottom: 4}}>
-                        Patient Profile
-                    </Typography>
-                    <Card fullWidth>
-                        <Avatar />
-                        <Typography>
-                            Name: 
-                        </Typography>
-
-                    </Card>
-
-
-                    <Button variant="contained" sx={{...btn}}>
-                        Emergency
-                    </Button>
-                    <Button variant="contained" sx={{...btn}}>
-                        My Health Records
-                    </Button>
-                    <Button sx={{...btn}} variant="contained">
-                        Contact Health Professional
-                    </Button>
-                    <Button variant="contained" sx={{...btn}}>
-                        Book Appointment
-                    </Button>
-                    <Button variant="contained" sx={{...btn}}>
-                        Reminders
-                    </Button>
-                </Stack>
-            </Box> */}
         </div>
     )
 }
