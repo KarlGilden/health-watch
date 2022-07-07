@@ -119,10 +119,7 @@ const AuthProvider = ({children}) => {
             const q = query(collection(db, "patients"), where("email", "==", email));
 
             const querySnapshot = await getDocs(q);
-            querySnapshot.forEach((doc) => {
-              // doc.data() is never undefined for query doc snapshots
-              console.log(doc.id, " => ", doc.data());
-            });
+            return querySnapshot.docs[0].data()
         } catch (e) {
             console.error("error retrieving patient: ", e);
         }

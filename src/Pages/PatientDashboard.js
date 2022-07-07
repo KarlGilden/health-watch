@@ -10,16 +10,18 @@ const PatientDashboard = () => {
 
     const { user, retrievePatient } = useAuth()
 
-    const [patientData, setPatientData] = React.useState();
+    const [patientData, setPatientData] = React.useState({});
 
     React.useEffect(()=>{
-        if(user){
+        if(user != undefined){
             getPatientData()
         }
-    })
+    }, [user])
 
     const getPatientData = async () => {
-        retrievePatient(user.email)
+        const d = await retrievePatient(user.email)
+        console.log(d)
+        setPatientData(d)
     }
 
     const btn = {
@@ -43,13 +45,13 @@ const PatientDashboard = () => {
                         <Avatar sx={{width:100, height: 100, padding: 2}} />
                         <Stack direction="column" justifyContent="flex-start" alignItems="flex-start">
                             <Typography variant="h8">
-                                Name: 
+                                Name: {patientData?.name}
                             </Typography>
                             <Typography variant="h8">
-                                NHI:
+                                NHI: {patientData?.NHI}
                             </Typography>
                             <Typography variant="h8">
-                                    DOB:
+                                DOB: {patientData?.DOB}
                             </Typography>
                             <Typography variant="h8">
                                     Age: 
