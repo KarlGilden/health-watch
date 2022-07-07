@@ -15,8 +15,7 @@ const UnauthedRoute = () => {
     }
   return (
     <>
-      {user && isPractitioner ? <Navigate to="/dashboards"/> : <Outlet/>}
-      {user && !isPractitioner ? <Navigate to="/dashboard"/> : <Outlet/>}
+      {user ? <Navigate to="/dashboards"/> : <Outlet/>}
 
     </>
 
